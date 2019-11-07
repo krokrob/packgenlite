@@ -1,0 +1,8 @@
+pip>=9
+setuptools>=26
+wheel>=0.29
+pandas
+coverage
+flake8
+yapf
+python-gitlab

@@ -1,0 +1,97 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import argparse
+import os
+import sys
+from os.path import expanduser
+from os.path import isfile
+# Import from the standard library
+from shutil import copytree, ignore_patterns
+# from six.moves import input
+from subprocess import call
+
+# Import from stkr_tools
+import wagon_tools
+
+
+def search_replace(path, filename, word, newword):
+    """ Open file search/replace and save inplace
+    """
+    res = []
+    with open('{}/{}'.format(path, filename), 'r') as myfile:
+        for line in myfile.readlines():
+            if line.count(word):
+                # line = sub('\b{}\b'.format(word), newword, line)
+                line = line.replace(word, newword)
+            res.append(line)
+    with open('{}/{}'.format(path, filename), 'w') as myfile:
+        myfile.writelines(res)
+
+
+def get_parser():
+    usage = ('%(prog)s PKG_NAME [-d DESC] [-g GROUP] [-T TOKEN] '
+             '[-c NAME -- EMAIL] [-r NAME  ]\n'
+             '')
+    description = 'Create a STYCKR python package'
+
+    default_msg = 'Project Description'
+    parser = argparse.ArgumentParser(usage=usage)
+    parser.add_argument(dest='pkg_name', nargs='?',
+                        action='store', default=None, const='proj42',
+                        help=('Package name '
+                              ' e.g. %(prog)s --package-name lpmchurn'))
+    parser.add_argument('-d', '--description', dest='description', nargs='?',
+                        action='store', default=default_msg,
+                        help=('Package description'
+                              ' e.g. %(prog)s lpm_churn -d'
+                              ' "lpm churn score engine"'))
+
+    return parser
+
+
+if __name__ == '__main__':
+    parser = get_parser()
+    args = parser.parse_args()
+    pkg_name = args.pkg_name
+    description = args.description
+
+    gitconfig = expanduser('~/.gitconfig')
+    respo = 'unspecified'
+
+    if isfile(gitconfig):
+        with open(expanduser('~/.gitconfig'), 'r') as myfile:
+            out = myfile.readlines()
+    name, email = [l for l in out if l.startswith('\tname')
+                   or l.startswith('\temail')]
+    respo = name.split(' = ')[-1].strip()
+    # support = args.support
+    # create sample files in a folder
+    dirname = os.path.dirname
+    source = dirname(os.path.abspath(wagon_tools.__file__)) + '/data/skeleton'
+    if os.path.isdir(pkg_name):
+        sys.exit('{} already exist'.format(pkg_name))
+    copytree(source, pkg_name, ignore=ignore_patterns('*.pyc', '__pycache__'))
+    # search replace in skeletion files
+    print('  => New python package {} created'.format(pkg_name))
+    pkgn = pkg_name
+    search_replace(pkgn, 'setup.py', 'proj_description', description)
+    search_replace(pkgn, 'setup.py', "'proj'", "'{}'".format(pkg_name))
+    search_replace(pkgn, 'setup.py', "'proj/", "'{}/".format(pkg_name))
+    search_replace(pkgn, 'setup.py', 'proj-run', '{}-run'.format(pkg_name))
+    search_replace(pkgn, 'Makefile', 'proj', pkg_name)
+    search_replace(pkgn, 'README.rst', '{proj}', pkg_name)
+    search_replace(pkgn, 'README.rst', '{description}', description)
+    search_replace(pkgn, 'MANIFEST.in', 'proj', pkg_name)
+    search_replace(pkgn, 'proj/lib.py', 'proj', pkg_name)
+    search_replace(pkgn, 'scripts/proj-process', 'proj', pkg_name)
+    os.rename('{}/proj'.format(pkg_name), '{}/{}'.format(pkg_name, pkg_name))
+    # warning if -n proj1 -> proj11
+    os.rename('{}/scripts/proj-process'.format(pkg_name),
+              '{}/scripts/{}-run'.format(pkg_name, pkg_name))
+    # git init 
+    call(["git", "init"], cwd=pkg_name)
+    call(["git", "add", ".gitignore", ".gitlab-ci.yml", "*"], cwd=pkg_name)
+    call(["git", "commit", "-m" "'initial" "commit'"], cwd=pkg_name)
+    call(["git", "tag", "-a", "0.4", "-m", "0.4"], cwd=pkg_name)
+

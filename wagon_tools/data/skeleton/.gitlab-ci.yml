@@ -1,0 +1,30 @@
+image: python:latest
+
+before_script:
+#  - export APTC=/apt-cache && mkdir -pv $APTC
+#  - apt-get update -yq
+#  - apt-get -o dir::cache::archives="$APTC" install -y python-dev python-pip tree unzip
+#  - pip install pip pip wheel setuptools -U --cache-dir=/pip-cache
+#  - pip --version
+  - pip install -r requirements.txt
+  - pip install .
+
+stages:
+- test
+- package
+- deploy
+
+
+quality_check:
+  stage: test
+  script:
+#  - make clean check_code
+  - coverage run -m unittest tests/*.py
+  - coverage report --omit=/usr/lib/python*, {proj}/*
+
+functional_test:
+  stage: test
+  script:
+  - make clean install
+  - echo 'please right functional test'
+

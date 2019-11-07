@@ -1,0 +1,8 @@
+*/version.txt
+*.pyc
+*.swp
+build/
+dist/
+.coverage
+ipynb_checkpoints/
+*.iml
