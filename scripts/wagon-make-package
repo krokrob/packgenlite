@@ -59,13 +59,6 @@ if __name__ == '__main__':
     gitconfig = expanduser('~/.gitconfig')
     respo = 'unspecified'
 
-    if isfile(gitconfig):
-        with open(expanduser('~/.gitconfig'), 'r') as myfile:
-            out = myfile.readlines()
-    name, email = [l for l in out if l.startswith('\tname')
-                   or l.startswith('\temail')]
-    respo = name.split(' = ')[-1].strip()
-    # support = args.support
     # create sample files in a folder
     dirname = os.path.dirname
     source = dirname(os.path.abspath(wagon_tools.__file__)) + '/data/skeleton'
