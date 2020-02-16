@@ -1,4 +1,4 @@
-WAGON tools, python package and more
+WAGON tools - Python package buiilder
 ========================================
 
 This package is a meta-package that provide python libs for projects
