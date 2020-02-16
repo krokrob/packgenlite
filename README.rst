@@ -1,10 +1,10 @@
-STYCKR tools, python package and more
+WAGON tools, python package and more
 ========================================
 
-This package is a meta-package that provide python libs for STYCKR projects
+This package is a meta-package that provide python libs for projects
 and mainly `wagon-make-package` script.
 
-`wagon-make-package` create a Python package template with all STYCKR tricks in it.
+`wagon-make-package` create a Python package template.
 
 Install `wagon_tools`
 -------------------
@@ -19,14 +19,14 @@ Install `wagon_tools`
 Create a `new_pkg_name` package
 ---------------------------------
 
-Use `wagon-make-package` to create a new STYCKR python package::
+Use `wagon-make-package` to create a new python package::
 
   $ wagon-make-package -n new_pkg_name -d "New project package"
     => New python package new_pkg_name created
   $ cd new_pkg_name/
   $ git init; git add *; git commit -am 'initial commit'
   $ git tag -a 0.42 -m 0.42
-  $ make clean psi
+  $ make clean
 
 Check that unittest work::
 
@@ -54,27 +54,6 @@ Check that `new_pkg_name` script work::
   (venv)styckruser@machine:/tmp$ wc -l out.csv
   1000 out.csv
   (venv)styckruser@machine:/tmp$
-
-Current state of wagon_tools
--------------------------
-
-wagon_tools create a new python package and instantly add this project in our
-gitlab if you used the -T arg.
-
-What append when you use -T.
-
-- Add two secret variable to this project  a SSH_PRIVATE_KEY that will allow a
-  production deployement on KVM05. And a SECRET_TOKEN that will be used to
-  handle dependcies.
-
-We wanted to used the CI_JOB_TOKEN provided by gitlab but this feature is not
-yet available for CCE edition.
-
-- Will push an initial commit with all the project and a second with all his
-  tags. Test will be executed and the package will be deployed on KVM05. MAybe
-  we should add a manual execution for the production install.
-
-
 
 
 
