@@ -10,10 +10,10 @@ Install `wagon_tools`
 -------------------
 ::
 
-  $ git clone git@gitlab.com:wagon-infra/wagon_tools.git
+  $ git clone git@github.com:lologibus2/wagon_tools.git
   $ cd wagon_tools
   $ pip install -r requirements.txt
-  $ make clean install
+  $ make install clean
 
 
 Create a `new_pkg_name` package
