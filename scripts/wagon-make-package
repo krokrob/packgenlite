@@ -3,6 +3,7 @@
 
 import argparse
 import os
+import shutil
 import sys
 from os.path import expanduser
 # Import from the standard library
@@ -32,7 +33,7 @@ def get_parser():
     usage = ('%(prog)s PKG_NAME [-d DESC] [-g GROUP] [-T TOKEN] '
              '[-c NAME -- EMAIL] [-r NAME  ]\n'
              '')
-    description = 'Create a STYCKR python package'
+    description = 'Create a python package'
 
     default_msg = 'Project Description'
     parser = argparse.ArgumentParser(usage=usage)
@@ -42,6 +43,11 @@ def get_parser():
                               ' e.g. %(prog)s --package-name lpmchurn'))
     parser.add_argument('-d', '--description', dest='description', nargs='?',
                         action='store', default=default_msg,
+                        help=('Package description'
+                              ' e.g. %(prog)s lpm_churn -d'
+                              ' "lpm churn score engine"'))
+    parser.add_argument('--gitlab', '-gl',
+                        action='store_true',
                         help=('Package description'
                               ' e.g. %(prog)s lpm_churn -d'
                               ' "lpm churn score engine"'))
@@ -56,7 +62,6 @@ if __name__ == '__main__':
     description = args.description
 
     gitconfig = expanduser('~/.gitconfig')
-    respo = 'unspecified'
 
     # create sample files in a folder
     dirname = os.path.dirname
@@ -82,9 +87,17 @@ if __name__ == '__main__':
     # warning if -n proj1 -> proj11
     os.rename('{}/scripts/proj-process'.format(pkg_name),
               '{}/scripts/{}-run'.format(pkg_name, pkg_name))
+    # CI
+    if args.gitlab:
+        shutil.rmtree("{}/.github".format(pkg_name), ignore_errors=False, onerror=None)
+    else:
+        os.remove("{}/.gitlab-ci.yml".format(pkg_name))
     # git init 
     call(["git", "init"], cwd=pkg_name)
-    call(["git", "add", ".gitignore", ".gitlab-ci.yml", "*"], cwd=pkg_name)
+    if args.gitlab:
+        call(["git", "add", ".gitignore", ".gitlab-ci.yml", "*"], cwd=pkg_name)
+    else:
+        call(["git", "add", ".gitignore", ".github", "*"], cwd=pkg_name)
     call(["git", "commit", "-m" "'initial" "commit'"], cwd=pkg_name)
     call(["git", "tag", "-a", "0.4", "-m", "0.4"], cwd=pkg_name)
 
