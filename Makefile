@@ -1,4 +1,21 @@
 PYPI_USER=lologibus2
+# ----------------------------------
+#          INSTALL & TEST
+# ----------------------------------
+install:
+	@pip install . -U
+
+test:
+	@python setup.py test -q
+
+ftest:
+	@rm -fr /tmp/ttt; cd /tmp;\
+     	wagon-make-package ttt -d TTT;\
+     	cd ttt;\
+     	make clean install test;\
+     	cd /tmp;\
+     	ttt-run;
+	@echo 'test_make_pkg made'
 
 clean:
 	@rm -fr dist
@@ -8,11 +25,6 @@ clean:
 	@rm -fr wagon_tools/version.txt
 	@find . -name \*.pyc -o -name \*.pyo -o -name __pycache__ -exec rm -rf {} +
 
-install:
-	@pip install . -U
-
-test:
-	@python setup.py test -q
 
 uninstal:
 	@python setup.py install --record files.txt
@@ -28,22 +40,21 @@ python_count_lines:
 	@echo ''
 
 
-
 test_make_pkg:
 	( \
 	rm -fr /tmp/ttt; cd /tmp;\
-	stkr-make-package ttt -d TTT;\
+	wagon-make-package ttt -d TTT;\
 	cd ttt;\
-	make check_code clean install test;\
-	make ftest;\
-	make wheel;\
+	make clean install test;\
 	cd /tmp;\
 	ttt-run;\
 	)
 	@echo '#########################################'
 	@echo 'test_make_pkg made'
 
-
+# ----------------------------------
+#      UPLOAD PACKAGE TO PYPI
+# ----------------------------------
 build:
 	@python setup.py sdist bdist_wheel
 

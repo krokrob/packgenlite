@@ -1,12 +1,21 @@
+import pathlib
 from setuptools import setup, find_packages
+# The directory containing this file
+HERE = pathlib.Path(__file__).parent
+
+# The text of the README file
+README = (HERE / "README.md").read_text()
+
 
 setup(name='wagon_tools',
-      version="1.0",
+      version="1.1.0",
       # Below to deal with cleaner versionning
       #setup_requires=['setuptools_scm'],
       #install_requires=['setuptools_scm'],
-      use_scm_version={'write_to': 'wagon_tools/version.txt'},
+      #use_scm_version={'write_to': 'wagon_tools/version.txt'},
       description="Package builder with CI included",
+      long_description=README,
+      long_description_content_type="text/markdown",
       url="https://github.com/lologibus2/wagon_tools",
       author='Jean Bizot', author_email="jea@gmail.com",
       packages=find_packages(),
