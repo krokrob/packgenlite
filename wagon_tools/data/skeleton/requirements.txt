@@ -6,3 +6,4 @@ coverage
 flake8
 yapf
 python-gitlab
+twine

@@ -5,7 +5,6 @@ import argparse
 import os
 import sys
 from os.path import expanduser
-from os.path import isfile
 # Import from the standard library
 from shutil import copytree, ignore_patterns
 # from six.moves import input
@@ -68,10 +67,10 @@ if __name__ == '__main__':
     # search replace in skeletion files
     print('  => New python package {} created'.format(pkg_name))
     pkgn = pkg_name
-    search_replace(pkgn, 'setup.py', 'proj_description', description)
-    search_replace(pkgn, 'setup.py', "'proj'", "'{}'".format(pkg_name))
-    search_replace(pkgn, 'setup.py', "'proj/", "'{}/".format(pkg_name))
-    search_replace(pkgn, 'setup.py', 'proj-run', '{}-run'.format(pkg_name))
+    search_replace(pkgn, 'old_setup.py', 'proj_description', description)
+    search_replace(pkgn, 'old_setup.py', "'proj'", "'{}'".format(pkg_name))
+    search_replace(pkgn, 'old_setup.py', "'proj/", "'{}/".format(pkg_name))
+    search_replace(pkgn, 'old_setup.py', 'proj-run', '{}-run'.format(pkg_name))
     search_replace(pkgn, 'Makefile', 'proj', pkg_name)
     search_replace(pkgn, 'README.rst', '{proj}', pkg_name)
     search_replace(pkgn, 'README.rst', '{description}', description)

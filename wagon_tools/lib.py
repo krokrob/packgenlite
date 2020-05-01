@@ -1,11 +1,9 @@
 # -*- coding: UTF-8 -*-
-# Copyright (C) 2018 Jean Bizot <jean@styckr.io>
-""" Project skeleton for STYCKR Projects
-"""
 
 from os.path import abspath
 from os.path import dirname
 import pandas as pd
+
 
 def get_data():
     """ Create data
@@ -32,6 +30,7 @@ if __name__ == '__main__':
     # For introspections purpose to quickly get this functions on ipython
     # with data
     import wagon_tools
+
     datapath = dirname(abspath(wagon_tools.__file__)) + '/data'
     data = '{}/data.csv'.format(datapath)
     df = pd.read_csv(data)
