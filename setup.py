@@ -8,7 +8,7 @@ README = (HERE / "README.md").read_text()
 
 
 setup(name='wagon_tools',
-      version="1.1.0",
+      version="1.1.1",
       # Below to deal with cleaner versionning
       #setup_requires=['setuptools_scm'],
       #install_requires=['setuptools_scm'],
