@@ -9,6 +9,7 @@ setup(name='proj',
       version="1.0",
       description="Project Description",
       packages=find_packages(),
+      install_requires=requirements,
       test_suite = 'tests',
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
