@@ -10,14 +10,34 @@ and mainly `wagon-make-package` script.
 pip install git+https://github.com/krokrob/wagon_tools.git
 ```
 
-## Create a `new_pkg_name` package
+## Create a `newpkgname` package
 
 Use `wagon-make-package` to create a new python package:
+
 ```bash
-  $ wagon-make-package -n new_pkg_name -d "New project package"
-    => New python package new_pkg_name created
-  $ cd new_pkg_name/
-  $ git init; git add *; git commit -am 'initial commit'
-  $ git tag -a 0.42 -m 0.42
-  $ make clean
+wagon-make-package newpkgname
+```
+
+Check that the package has been created:
+
+```bash
+cd newpkgname
+tree
+.
+├── MANIFEST.in
+├── Makefile
+├── README.md
+├── newpkgname
+│   ├── __init__.py
+│   └── data
+├── notebooks
+├── raw_data
+├── requirements.txt
+├── scripts
+│   └── newpkgname-run
+├── setup.py
+└── tests
+    └── __init__.py
+
+6 directories, 8 files
 ```
