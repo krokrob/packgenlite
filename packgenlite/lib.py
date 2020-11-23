@@ -29,9 +29,9 @@ def make_result(df, filename):
 if __name__ == "__main__":
     # For introspections purpose to quickly get this functions on ipython
     # with data
-    import wagon_tools
+    import packgenlite
 
-    datapath = dirname(abspath(wagon_tools.__file__)) + "/data"
+    datapath = dirname(abspath(packgenlite.__file__)) + "/data"
     data = "{}/data.csv".format(datapath)
     df = pd.read_csv(data)
     data = get_data()

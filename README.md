@@ -1,21 +1,21 @@
-# WAGON tools - Python package builder
+# packgenlite - Python package builder
 
 This package is a meta-package that provide python libs for projects
-and mainly `wagon-make-package` script.
+and mainly `packgenlite` script.
 
-`wagon-make-package` create a Python package template.
+`packgenlite` create a Python package template.
 
-## Install `wagon_tools`
+## Install `packgenlite`
 ```bash
-pip install git+https://github.com/krokrob/wagon_tools.git
+pip install git+https://github.com/krokrob/packgenlite.git
 ```
 
 ## Create a `newpkgname` package
 
-Use `wagon-make-package` to create a new python package:
+Use `packgenlite` to create a new python package:
 
 ```bash
-wagon-make-package newpkgname
+packgenlite newpkgname
 ```
 
 Check that the package has been created:

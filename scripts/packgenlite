@@ -12,7 +12,7 @@ from shutil import copytree, ignore_patterns
 from subprocess import call
 
 # Import from stkr_tools
-import wagon_tools
+import packgenlite
 
 
 def search_replace(path, filename, word, newword):
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     # create sample files in a folder
     dirname = os.path.dirname
-    source = dirname(os.path.abspath(wagon_tools.__file__)) + '/data/skeleton'
+    source = dirname(os.path.abspath(packgenlite.__file__)) + '/data/skeleton'
     if os.path.isdir(pkg_name):
         sys.exit('{} already exist'.format(pkg_name))
     copytree(source, pkg_name, ignore=ignore_patterns('*.pyc', '__pycache__'))

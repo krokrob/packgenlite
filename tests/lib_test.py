@@ -2,12 +2,12 @@
 
 # Import from standard library
 import os
-import wagon_tools
+import packgenlite
 import unittest
 import pandas as pd
 
 # Import from our lib
-from wagon_tools.lib import get_data, clean_data
+from packgenlite.lib import get_data, clean_data
 
 
 class TestUtils(unittest.TestCase):
@@ -19,7 +19,7 @@ class TestUtils(unittest.TestCase):
 
     # @unittest.skip('')
     def test_clean_data(self):
-        datapath = os.path.dirname(os.path.abspath(wagon_tools.__file__)) + '/data'
+        datapath = os.path.dirname(os.path.abspath(packgenlite.__file__)) + '/data'
         df = pd.read_csv('{}/data.csv'.format(datapath))
         out = clean_data(df.columns[3])
         self.assertEqual('GAME', out)

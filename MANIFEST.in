@@ -1,2 +1,2 @@
-graft wagon_tools
+graft packgenlite
 global-exclude *.py[cod] __pycache__ *.so
