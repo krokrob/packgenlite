@@ -1,3 +1,1 @@
-graft proj
-global-exclude *.py[cod] __pycache__ *.so *.ipynb
-recursive-exclude  proj/jupy *
+include requirements.txt

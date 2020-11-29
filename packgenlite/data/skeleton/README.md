@@ -6,7 +6,7 @@
 
 Please document the project the better you can.
 
-# Stratup the project
+# Startup the project
 
 The initial setup.
 
@@ -61,10 +61,4 @@ Functionnal test with a script:
 ```bash
   $ cd /tmp
   $ {proj}-run
-``` 
-
-# Continus integration
-## Github 
-Every push of `master` branch will execute `.github/workflows/pythonpackages.yml` docker jobs.
-## Gitlab
-Every push of `master` branch will execute `.gitlab-ci.yml` docker jobs.
+```
