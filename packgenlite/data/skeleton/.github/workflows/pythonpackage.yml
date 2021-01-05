@@ -1,6 +1,6 @@
-# # 🤖 this is the conf for GitHub continuous integration
+# # 🤖 this is the conf for GitHub Continuous Integration
 # # you will find at the bottom of the file a commented conf sample
-# # for continuous deployment to heroku
+# # for Continuous Deployment to Heroku
 name: Python package
 
 on:
@@ -31,10 +31,10 @@ jobs:
       run: |
         make install test clean
 
-# # 🤖 uncomment the following lines to activate continuous deployment to heroku
+# # 🤖 uncomment the following lines to activate Continuous Deployment to Heroku
 # # - only remove the trailing #, do not change the spaces (there should be 2 spaces before the deploy_heroku key)
-# # - keep in mind you also need to configure heroku HEROKU_API_KEY and HEROKU_EMAIL in GitHub secrets
-# # - and replace REPLACE_WITH_YOUR_HEROKU_APP_NAME in this file by the name of your heroku app
+# # - keep in mind you also need to configure Heroku HEROKU_API_KEY and HEROKU_EMAIL in GitHub secrets
+# # - and replace REPLACE_WITH_YOUR_HEROKU_APP_NAME in this file with the name of your Heroku app
 #
 #  deploy_heroku:
 #    runs-on: ubuntu-latest
