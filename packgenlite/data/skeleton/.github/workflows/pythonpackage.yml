@@ -1,0 +1,47 @@
+# # 🤖 this is the conf for GitHub Continuous Integration
+# # you will find at the bottom of the file a commented conf sample
+# # for Continuous Deployment to Heroku
+name: Python package
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Install package and test
+      run: |
+        make install test clean
+
+# # 🤖 uncomment the following lines to activate Continuous Deployment to Heroku
+# # - only remove the trailing #, do not change the spaces (there should be 2 spaces before the deploy_heroku key)
+# # - keep in mind you also need to configure Heroku HEROKU_API_KEY and HEROKU_EMAIL in GitHub secrets
+# # - and replace REPLACE_WITH_YOUR_HEROKU_APP_NAME in this file with the name of your Heroku app
+#
+#  deploy_heroku:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v2
+#    - uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
+#      with:
+#        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#        heroku_app_name: "REPLACE_WITH_YOUR_HEROKU_APP_NAME" # Must be unique in Heroku
+#        heroku_email: ${{secrets.HEROKU_EMAIL}}
