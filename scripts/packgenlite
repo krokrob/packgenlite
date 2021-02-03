@@ -37,9 +37,8 @@ def get_parser():
 
     default_msg = 'Project Description'
     parser = argparse.ArgumentParser(usage=usage)
-    parser.add_argument(dest='pkg_name', nargs='?',
-                        action='store', default=None, const='proj42',
-                        help=('Package name '
+    parser.add_argument(dest='pkg_name', action='store',
+						help=('Package name '
                               ' e.g. %(prog)s --package-name lpmchurn'))
     parser.add_argument('-d', '--description', dest='description', nargs='?',
                         action='store', default=default_msg,
