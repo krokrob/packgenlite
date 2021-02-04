@@ -1,9 +1,8 @@
-PYPI_USER=lologibus2
 # ----------------------------------
 #          INSTALL & TEST
 # ----------------------------------
 install:
-	@pip install . -U
+	@pip install -e .
 
 test:
 	@python setup.py test -q
@@ -51,15 +50,3 @@ test_make_pkg:
 	)
 	@echo '#########################################'
 	@echo 'test_make_pkg made'
-
-# ----------------------------------
-#      UPLOAD PACKAGE TO PYPI
-# ----------------------------------
-build:
-	@python setup.py sdist bdist_wheel
-
-pypi_test:
-	@twine upload -r testpypi dist/* -u lologibus2
-
-pypi:
-	@twine upload dist/* -u lologibus2

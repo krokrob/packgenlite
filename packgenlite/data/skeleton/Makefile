@@ -50,11 +50,12 @@ count_lines:
 # ----------------------------------
 #      UPLOAD PACKAGE TO PYPI
 # ----------------------------------
+PYPI_USERNAME=<AUTHOR>
 build:
 	@python setup.py sdist bdist_wheel
 
 pypi_test:
-	@twine upload -r testpypi dist/* -u lologibus2
+	@twine upload -r testpypi dist/* -u $(PYPI_USERNAME)
 
 pypi:
-	@twine upload dist/* -u lologibus2
+	@twine upload dist/* -u $(PYPI_USERNAME)
