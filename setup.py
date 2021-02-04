@@ -6,12 +6,16 @@ HERE = pathlib.Path(__file__).parent
 # The text of the README file
 README = (HERE / "README.md").read_text()
 
+with open("requirements.txt") as f:
+    content = f.readlines()
+requirements = [x.strip() for x in content]
 
 setup(name='packgenlite',
       version="1.1.2",
       # Below to deal with cleaner versionning
       #setup_requires=['setuptools_scm'],
       #install_requires=['setuptools_scm'],
+      install_requires=requirements,
       #use_scm_version={'write_to': 'packgenlite/version.txt'},
       description="Package builder for Data Science projects derived from https://github.com/lologibus2/wagon_tools",
       long_description=README,
