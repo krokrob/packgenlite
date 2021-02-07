@@ -79,6 +79,8 @@ if __name__ == '__main__':
     search_replace(pkgn, 'README.md', '{proj}', pkg_name)
     search_replace(pkgn, 'README.md', '{description}', description)
     search_replace(pkgn, 'MANIFEST.in', 'proj', pkg_name)
+    search_replace(pkgn, 'proj/lib.py', 'proj', pkg_name)
+    search_replace(pkgn, 'tests/lib_test.py', 'proj', pkg_name)
     search_replace(pkgn, 'scripts/proj-process', 'proj', pkg_name)
     os.rename('{}/proj'.format(pkg_name), '{}/{}'.format(pkg_name, pkg_name))
     # warning if -n proj1 -> proj11
