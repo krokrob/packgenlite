@@ -29,6 +29,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Say hello
+      run: |
+        echo "Hello, World!"
     # - name: Set up Python ${{ matrix.python-version }}
     #   uses: actions/setup-python@v1
     #   with:
@@ -43,7 +46,7 @@ jobs:
 
     # strategy:
     #   matrix:
-    #     python-version: [3.6, 3.7]
+    #     python-version: [3.7]
 
   # # 🤖 CD paragraph
   # #
