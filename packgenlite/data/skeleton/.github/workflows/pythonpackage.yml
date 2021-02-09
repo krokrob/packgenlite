@@ -2,8 +2,8 @@
 # 🤖 usage
 #
 # this file contains the conf for GitHub Continuous Integration and Continuous Deployment to Heroku
-# - uncomment the content of the CI paragraph (lines 31-45) to activate GitHub CI
-# - uncomment the content of the CI + CD paragraphs (lines 31-65) to activate CI + CD to Heroku
+# - uncomment the content of the CI paragraph (lines 32-46) to activate GitHub CI
+# - uncomment the content of the CI + CD paragraphs (lines 32-66) to activate CI + CD to Heroku
 
 name: Python package
 
