@@ -1,9 +1,16 @@
 
 # 🤖 usage
 #
-# this file contains the conf for GitHub Continuous Integration and Continuous Deployment to Heroku
-# - uncomment the content of the CI paragraph (lines 32-46) to activate GitHub CI
-# - uncomment the content of the CI + CD paragraphs (lines 32-66) to activate CI + CD to Heroku
+# this file contains the conf for GitHub Continuous Integration
+#   and Continuous Deployment to Heroku
+#
+# in order to activate the tests in GitHub CI:
+# - uncomment the content of the CI paragraph (lines 41-55)
+# - create some tests in the tests/ directory
+#
+# in order to activate CD to Heroku:
+# - activate the tests in GitHub CI
+# - uncomment the content of the CD paragraph (lines 57-75)
 
 name: Python package
 
@@ -17,11 +24,10 @@ jobs:
 
   # 🤖 CI paragraph
   #
-  # uncomment this paragraph to activate GitHub Continuous Integration
+  # uncomment the content of this paragraph to activate the tests in GitHub CI
   # - remove the 2 trailing characters "# ", do not change the spaces
   #   (the `name` keys should be at the same level as the `uses` key)
   #   (the `strategy` key should be at the same level as the `steps` key)
-  # - you may remove one of the python versions, you probably do not need both
 
   build:
 
@@ -50,9 +56,9 @@ jobs:
 
   # # 🤖 CD paragraph
   # #
-  # # uncomment the following lines to activate Continuous Deployment to Heroku
+  # # uncomment the following lines to activate CD to Heroku
   # # - remove the 2 trailing characters "# ", do not change the spaces
-  # #   (there should be 2 spaces before the deploy_heroku key)
+  # #   (there should be 2 spaces before the `deploy_heroku` key)
   # # - keep in mind you also need to configure Heroku HEROKU_API_KEY and HEROKU_EMAIL in GitHub secrets
   # # - and replace REPLACE_WITH_YOUR_HEROKU_APP_NAME in this file with the name of your Heroku app
 
