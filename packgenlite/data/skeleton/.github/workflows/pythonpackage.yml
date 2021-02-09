@@ -1,48 +1,49 @@
 
-# # 🤖 main paragraph
-# #
-# # this file contains the conf for GitHub Continuous Integration and Continuous Deployment to Heroku
-# # - uncomment the main paragraph + CI paragraph to activate GitHub CI
-# # - uncomment the main paragraph + CI + CD paragraphs to activate CD to Heroku
+# 🤖 usage
+#
+# this file contains the conf for GitHub Continuous Integration and Continuous Deployment to Heroku
+# - uncomment the content of the CI paragraph (lines 31-45) to activate GitHub CI
+# - uncomment the content of the CI + CD paragraphs (lines 31-65) to activate CI + CD to Heroku
 
-# name: Python package
+name: Python package
 
-# on:
-#   push:
-#     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-# jobs:
+jobs:
 
-  # # 🤖 CI paragraph
-  # #
-  # # uncomment this paragraph to activate GitHub Continuous Integration
-  # # - remove the 2 trailing characters "# ", do not change the spaces
-  # #   (there should be 2 spaces before the build key)
-  # # - you may remove one of the python versions, you probably do not need both
+  # 🤖 CI paragraph
+  #
+  # uncomment this paragraph to activate GitHub Continuous Integration
+  # - remove the 2 trailing characters "# ", do not change the spaces
+  #   (the `name` keys should be at the same level as the `uses` key)
+  #   (the `strategy` key should be at the same level as the `steps` key)
+  # - you may remove one of the python versions, you probably do not need both
 
-  # build:
+  build:
 
-  #   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       python-version: [3.6, 3.7]
+    steps:
+    - uses: actions/checkout@v2
+    # - name: Set up Python ${{ matrix.python-version }}
+    #   uses: actions/setup-python@v1
+    #   with:
+    #     python-version: ${{ matrix.python-version }}
+    # - name: Install dependencies
+    #   run: |
+    #     python -m pip install --upgrade pip
+    #     pip install -r requirements.txt
+    # - name: Install package and test
+    #   run: |
+    #     make install test clean
 
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Set up Python ${{ matrix.python-version }}
-  #     uses: actions/setup-python@v1
-  #     with:
-  #       python-version: ${{ matrix.python-version }}
-  #   - name: Install dependencies
-  #     run: |
-  #       python -m pip install --upgrade pip
-  #       pip install -r requirements.txt
-  #   - name: Install package and test
-  #     run: |
-  #       make install test clean
+    # strategy:
+    #   matrix:
+    #     python-version: [3.6, 3.7]
 
   # # 🤖 CD paragraph
   # #
