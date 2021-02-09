@@ -1,17 +1,23 @@
-# 🤖 this file contains the conf for GitHub Continuous Integration and Continuous Deployment to Heroku
-# - uncomment the top paragraph to activate GitHub Continuous Integration
-# - uncomment the bottom paragraph to activate Continuous Deployment to Heroku
-name: Python package
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# # 🤖 main paragraph
+# #
+# # this file contains the conf for GitHub Continuous Integration and Continuous Deployment to Heroku
+# # - uncomment the main paragraph + CI paragraph to activate GitHub CI
+# # - uncomment the main paragraph + CI + CD paragraphs to activate CD to Heroku
 
-jobs:
+# name: Python package
 
-  # # 🤖 uncomment this paragraph to activate GitHub Continuous Integration
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
+
+# jobs:
+
+  # # 🤖 CI paragraph
+  # #
+  # # uncomment this paragraph to activate GitHub Continuous Integration
   # # - remove the 2 trailing characters "# ", do not change the spaces
   # #   (there should be 2 spaces before the build key)
   # # - you may remove one of the python versions, you probably do not need both
@@ -38,7 +44,9 @@ jobs:
   #     run: |
   #       make install test clean
 
-  # # 🤖 uncomment the following lines to activate Continuous Deployment to Heroku
+  # # 🤖 CD paragraph
+  # #
+  # # uncomment the following lines to activate Continuous Deployment to Heroku
   # # - remove the 2 trailing characters "# ", do not change the spaces
   # #   (there should be 2 spaces before the deploy_heroku key)
   # # - keep in mind you also need to configure Heroku HEROKU_API_KEY and HEROKU_EMAIL in GitHub secrets
