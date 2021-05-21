@@ -24,12 +24,6 @@ clean:
 	@rm -fr packgenlite/version.txt
 	@find . -name \*.pyc -o -name \*.pyo -o -name __pycache__ -exec rm -rf {} +
 
-
-uninstal:
-	@python setup.py install --record files.txt
-	@cat files.txt | xargs rm -rf
-	@rm -f files.txt
-
 python_count_lines:
 	@find ./ble -name '*.py' -exec  wc -l {} \; | sort -n| awk \
         '{printf "%4s %s\n", $$1, $$2}{s+=$$0}END{print s}'

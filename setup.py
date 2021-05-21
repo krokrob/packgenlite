@@ -12,7 +12,7 @@ requirements = [x.strip() for x in content if 'git+' not in x]
 
 
 setup(name='packgenlite',
-      version="1.1.2",
+      version="1.1.3",
       # Below to deal with cleaner versionning
       #setup_requires=['setuptools_scm'],
       install_requires=requirements,
