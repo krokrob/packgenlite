@@ -63,7 +63,7 @@ jobs:
   # # - and replace REPLACE_WITH_YOUR_HEROKU_APP_NAME in this file with the name of your Heroku app
 
   # deploy_heroku:
-
+  #   needs: build
   #   runs-on: ubuntu-latest
 
   #   steps:
