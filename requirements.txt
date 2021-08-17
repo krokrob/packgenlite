@@ -3,5 +3,8 @@ setuptools>=26
 wheel>=0.29
 setuptools_scm
 future
+numpy
 pandas
+pandas-stubs
+mypy
 python-gitlab
