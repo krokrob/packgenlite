@@ -7,7 +7,7 @@ and mainly `packgenlite` script.
 
 ## Install `packgenlite`
 ```bash
-pip install git+https://github.com/krokrob/packgenlite.git
+pip install git+ssh://git@github.com/krokrob/packgenlite.git
 ```
 
 ## Create a `newpkgname` package
