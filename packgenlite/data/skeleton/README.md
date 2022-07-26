@@ -22,11 +22,10 @@ Unittest test:
 make clean install test
 ```
 
-Check for {proj} in gitlab.com/{group}.
-If your project is not set please add it:
+Check for {proj} in github.com/{group}. If your project is not set please add it:
 
-- Create a new project on `gitlab.com/{group}/{proj}`
-- Then populate it:
+Create a new project on github.com/{group}/{proj}
+Then populate it:
 
 ```bash
 ##   e.g. if group is "{group}" and project_name is "{proj}"
